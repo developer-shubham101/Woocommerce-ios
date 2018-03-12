@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (4.7.0)
+  - CryptoSwift (0.8.3)
+  - OAuthSwift (1.2.0)
+  - ObjectMapper (3.1.0)
+  - SwiftyJSON (4.0.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - CryptoSwift
+  - OAuthSwift (~> 1.2.0)
+  - ObjectMapper (~> 3.1)
+  - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
+  CryptoSwift: 033efc3523865d19cc6ab6612fa17a62613b5dfa
+  OAuthSwift: 7fd6855b8e4d58eb5a30d156ea9bed7a8aecd1ca
+  ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+
+PODFILE CHECKSUM: 4ffcdb15c0b2629763562f55583b4c3f9bca4f8b
+
+COCOAPODS: 1.4.0
