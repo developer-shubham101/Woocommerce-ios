@@ -16,9 +16,9 @@
     
     
     init() {
-        self.siteDomain =  "sample.racysharma.com"
-        self.consumerKey = "ck_b255d748344eb0347f89943542ed1c6e54ff4908"
-        self.consumerSecret = "cs_db6b829e4595839b3e1cd112dea0f903395d7f71"
+        self.siteDomain =  ""
+        self.consumerKey = ""
+        self.consumerSecret = ""
         
         if(isSSL){
             self.siteURL = "https://" + self.siteDomain
@@ -86,9 +86,9 @@
         return finalUrl
     }
     
-    fileprivate func hitGet(_ finalUrl: String,  completion: @escaping (_ success: Bool, _ response: JSON?) -> Void) {
+    fileprivate func hitGet(_ finalUrl: String, method:HTTPMethod, completion: @escaping (_ success: Bool, _ response: JSON?) -> Void) {
         print( " final url :\(finalUrl)")
-        Alamofire.request(finalUrl, method: .get) .responseJSON { response in
+        Alamofire.request(finalUrl, method: method) .responseJSON { response in
             if response.result.isSuccess {
                 let json = response.result.value
                 let sJSON = JSON(json as Any)
@@ -101,11 +101,11 @@
         }
     }
     
-    fileprivate func hitPost(_ finalUrl: String, parameters: Dictionary<String, Any>, completion: @escaping (_ success: Bool, _ response: JSON?) -> Void) {
+    fileprivate func hitPost(_ finalUrl: String,method:String, parameters: Dictionary<String, Any>, completion: @escaping (_ success: Bool, _ response: JSON?) -> Void) {
         print( " final url :\(finalUrl)")
         
         var request = URLRequest(url: URL(string:finalUrl)!)
-        request.httpMethod = "POST"
+        request.httpMethod = method
         request.setValue("application/json", forHTTPHeaderField: "Content-Type") 
         request.httpBody = try! JSONSerialization.data(withJSONObject: parameters)
         
@@ -129,7 +129,7 @@
     
     public func getProductsData(endPoint: String, optionalParam:Dictionary<String,String>? = nil) {
         let finalUrl = getFinalUrl(method: "GET", endPoint: endPoint, optionalParam: optionalParam );
-        hitGet(finalUrl,  completion:{ (success, response) in
+        hitGet(finalUrl,method: .get,  completion:{ (success, response) in
             if(success == true && response != nil){
                 print(response as Any)
 //                let wcProduct = WCProduct(jsonData: response![0])
@@ -140,7 +140,7 @@
     }
     public func getOrdersData(endPoint: String){
         let finalUrl = getFinalUrl(method: "GET", endPoint: endPoint);
-        hitGet(finalUrl, completion:{ (success, response) in
+        hitGet(finalUrl, method: .get, completion:{ (success, response) in
             if(success == true && response != nil){
                 let wcProduct = WCOrder(jsonData: response![0])
                 print("orders: \(wcProduct)")
@@ -149,9 +149,26 @@
     }
     public func createorder(endPoint: String,parameters :Dictionary<String, Any>){
         let finalUrl = getFinalUrl(method: "POST", endPoint: endPoint);
-        hitPost(finalUrl, parameters: parameters, completion:{ (success, response) in
+        hitPost(finalUrl, method: "POST", parameters: parameters, completion:{ (success, response) in
             if(success == true && response != nil){
                 
+            }
+        })
+    }
+    public func updateOrder(endPoint: String,parameters :Dictionary<String, Any>){
+        let finalUrl = getFinalUrl(method: "PUT", endPoint: endPoint);
+        hitPost(finalUrl, method: "PUT", parameters: parameters, completion:{ (success, response) in
+            if(success == true && response != nil){
+                
+            }
+        })
+    }
+    
+    public func deleteAnOrder(endPoint: String){
+        let finalUrl = getFinalUrl(method: "DELETE", endPoint: endPoint);
+        hitGet(finalUrl, method: .delete, completion:{ (success, response) in
+            if(success == true && response != nil){
+                print(response as Any)
             }
         })
     }

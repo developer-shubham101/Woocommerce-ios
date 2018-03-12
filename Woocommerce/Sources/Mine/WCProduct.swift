@@ -68,11 +68,6 @@ public struct WCProduct {
     public var buttonText: String?
     public var menuOrder: Int?
     
-    
-    
-    
-    
-    
     init(jsonData: JSON) {
         
         id = jsonData["id"].stringValue
