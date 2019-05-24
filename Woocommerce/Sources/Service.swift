@@ -16,9 +16,9 @@
     
     
     init() {
-        self.siteDomain =  ""
-        self.consumerKey = ""
-        self.consumerSecret = ""
+        self.siteDomain =  "devpoint.site90.com"
+        self.consumerKey = "ck_6b2ef991cc54b9798882050985c1ddbc8c3ee917"
+        self.consumerSecret = "cs_bc2a76fc63e257dac84f88b6f7e76ae862feee95"
         
         if(isSSL){
             self.siteURL = "https://" + self.siteDomain

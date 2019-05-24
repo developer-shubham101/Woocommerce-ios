@@ -10,9 +10,9 @@ public class Client {
     public var siteURL: String?
 
     init() {
-        self.siteURL =  "http://sample.racysharma.com"
-        self.consumerKey = "ck_b255d748344eb0347f89943542ed1c6e54ff4908"
-        self.consumerSecret = "cs_db6b829e4595839b3e1cd112dea0f903395d7f71"
+        self.siteURL =  ""
+        self.consumerKey = ""
+        self.consumerSecret = ""
         
     }
 
